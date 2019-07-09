@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events</title>
+
+	<style>
+		.fancyP{
+			background-color: red;
+			color: white;
+			border-radius: 5px;
+			border-style:dotted;
+			border-width: 1px;
+			border-color:darkred;
+		}
+
+		.invalid {
+			background-color: red;
+			color:white;
+		}
+
+	</style>
+
+
+	<script>
+		function pageLoaded () {
+			console.log("the page has loaded");
+		}
+		function clickMe() {
+			var inputName = document.getElementById("name");
+			var paragraf = document.getElementById("paragraf");
+			if(inputName.value==="") {
+				inputName.classList.add("invalid");
+				return;
+			} else {
+				inputName.classList.remove("invalid");
+			}
+
+			paragraf.innerHTML = "Hello "+inputName.value; //s-au inlocuit toate span-urile si le-am inlocuit cu text
+			//paragraf.style.backgroundColor = "red";
+			paragraf.classList.add("fancyP");
+
+			console.log(paragraf.innerHTML);
+			console.log(paragraf.innerText);
+
+			//document.getElementById("name");
+			document.querySelector("#name"); //alternativa la getElementByID returneaza un singur selector (pe primul pe care in gaseste). Daca nu gaseste o sa returneze null. Atentie trebuie sa putem #
+			document.querySelectorAll("#name") // returneaza mereu o lista (array de elemente)
+
+		}
+
+	</script>
+
+</head>
+<body onload="pageLoaded();">
+
+	<form>
+		<input id="name" type="text"/>
+	</form>
+
+	<button onclick="clickMe ();">Click me!</button>
+
+	<p id="paragraf" style="">
+		<span>Ana</span>
+		<span>Are</span>
+		<span>Mere</span>
+	</p>
+
+</body>
+</html>

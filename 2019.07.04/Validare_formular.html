@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Validare formular</title>
+	<style>
+		input.invalid{
+			border-color: red;
+			background-color: #ffd1d1;
+		}
+	</style>
+	<script>
+		function validate(formular,event) {
+			event.preventDefault(); // opreste reincarcarea paginii
+			var nume=document.querySelector("[name='nume']").value;
+			if(nume.length>=2){
+				document.querySelector("[name='nume']").classList.remove("invalid"); //in cazul in care se completeaza casuta corect se elimina atentionarea (border si background rosu)
+
+			}else{
+				document.querySelector("[name='nume']").classList.add("invalid"); // in cazul in care NU se completeaza casuta corect se apare atentionarea (border si background rosu) atentie in paranteza la clasa nu se pune punct inainte
+			}
+			
+			var nume=document.querySelector("[name='prenume']").value;
+			if(nume.length>=2){
+				document.querySelector("[name='prenume']").classList.remove("invalid"); 
+			}else{
+				document.querySelector("[name='prenume']").classList.add("invalid"); 
+			}
+
+			var name=document.querySelector("[name='telefon']").value;
+			if (telefon.length<10) {
+				document.querySelector("[name='telefon']").classList.remove("invalid");
+			}else{
+				document.querySelector("[name='telefon']").classList.add("invalid"); 
+			}
+
+
+
+
+		}
+
+	</script>
+
+
+</head>
+<body>
+	<form onsubmit="validate(this,event)">
+		<fieldset>
+			<legend>Adauga cont</legend>
+
+			<label for="nume">Nume:</label><input id="nume" name="nume" type="text"/> <br />
+			<label>Prenume: <input type="text" name="prenume"/></label> <br />
+			<label>Numar telefon: <input type="tel" name="telefon"/></label> <br />
+			<label>Email <input type="text" name="email"/></label> <br />
+			<label>Sex: 
+				<input type="radio" name="sex" value="M"/>M 
+				<input type="radio" name="sex" value="F"/>F <br /> 
+			<label>Culoare favorita: 
+				<select name="culoare">
+					<option value="">[Alege]</option>
+					<option>Rosu</option>
+					<option>Albastru</option>
+					<option>Verde</option>
+				</select>
+			</label> <br />
+			<label>T&C: <input type="checkbox" name="toc"/></label> <br />
+			<label>Comentarii: <textarea name="comentarii"></textarea> </label> <br />
+
+			<input type="submit" value="Salveaza" />
+
+		</fieldset>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tabs</title>
+	
+	<style>
+		.hidden {
+			display: none;
+		}
+		.active {
+			background-color: yellow;
+		}
+	</style>
+
+	<script>
+		function changeTab (tabNr) {
+			var pageToBeActive = document.querySelector("section.page:nth-of-type("+(tabNr+1)+")"); /* preia tabul care vreau sa fie activ */
+			var pageToBeActive = document.querySelectorAll ("section.page")[tabNr]; /* idem mai sus - alta varianta */
+			var pageThatWasActive = document.querySelector("section.page:not(.hidden)"); /* tab-ul care nu mai tb sa fie activ */
+			var tabToBeActive = document.querySelectorAll ("button.tab") [tabNr];
+			var tabThatWasActive = document.querySelector("button.tab.active");
+
+			pageThatWasActive.classList.add("hidden");	
+			pageToBeActive.classList.remove("hidden");
+
+			
+			tabThatWasActive.classList.remove("active");
+			tabToBeActive.classList.add("active");
+		}
+	</script>
+
+
+</head>
+<body>
+	<div>
+		<button class="tab active" onclick="changeTab (0)">Tab1</button>
+		<button class="tab" onclick="changeTab (1)">Tab2</button>
+		<button class="tab" onclick="changeTab (2)">Tab3</button>
+		<button class="tab" onclick="changeTab (3)">Tab4</button>
+		<button class="tab" onclick="changeTab (4)">Tab5</button>
+	</div>
+	<div>
+		<section class="page">Content for Tab1</section>
+		<section class="page hidden">Content for Tab2</section>
+		<section class="page hidden">Content for Tab3</section>
+		<section class="page hidden">Content for Tab4</section>
+		<section class="page hidden">Content for Tab5</section>
+	</div>
+	
+	
+</body>
+</html>

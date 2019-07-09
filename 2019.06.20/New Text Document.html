@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>While</title>
+
+	<script>
+
+/*arata numerele de la 1 la 100 */
+		var nr = 1;
+		while(nr<=100) {
+			console.log (nr);
+			nr=nr+1;
+		}
+
+/*arata numerele de la n1 la n2 */
+		function showNr (n1, n2) {
+			var nr = n1;
+			while (nr<=n2) {
+				console.log (nr);
+				nr = nr+1;
+			}
+		}
+		showNr (5, 15);
+
+/*arata numerele de la n1 la n2 pare */
+		function showNrPare (n1, n2) {
+			var nr = n1;
+			while (nr<=n2) {
+				if(nr%2===0) {
+					console.log (nr);
+				}
+				nr = nr+1;
+			}
+		}
+		showNrPare (5, 15);
+
+/* FizzBuzz game*/
+
+		function showFizzBuzz (n1, n2) {
+			var nr = n1;
+			while (nr<=n2) {
+				if(nr%3===0 && nr%5===0) {
+					console.log (nr+" Fizz Buzz");
+				} else if (nr%5===0) {
+					console.log (nr+"Buzz");
+				} else if (nr%3===0) {
+					console.log (nr+"Fizz");
+				} else {
+					console.log(nr+"");
+				}
+				nr = nr+1;
+			}
+		}
+		showFizzBuzz (1, 100);
+//=============
+		var nr = 1;
+		while(nr<=100) {
+			console.log (nr);
+			nr=nr+1;
+		}
+/*/=============
+		for(var nr = 1;nr<=100;nr=nr+1) {
+			console.log(nr);
+		}
+/*
+//=============
+	nr = nr+1;
+	//=============
+	nr +=1;
+	//=============
+	nr++;
+
+//=============
+	nr = nr-1;
+	//=============
+	nr -=1;
+	//=============
+	nr--;
+//=============
+	nr = nr*1;
+	//=============
+	nr *=1;
+	//=============
+*/
+
+
+/* suma numerelor mai mici decat N*/
+	function suma (n) {
+		var s=0;
+		for (var i=1;i<n;i++) {
+			s+=i;
+		}
+		return s;
+	}
+	console.log(suma(5));
+
+/* produsul numerelor mai mici decat N*/
+
+	function sumaProdus (n) {
+		var s=1;
+		for (var i=1;i<n;i++) {
+			s*=i;
+		}
+		return s;
+	}
+	console.log(sumaProdus(5));
+
+	var str = "Ana are mere";
+	for (var i=0; i<str.length; i++) {
+		console.log(str[i]);
+	}
+	for (var i=str.length-1; i>=0; i--) {
+		console.log(str[i]);
+	}
+
+	function reverse(str) {
+		var s="";
+		for (var i=str.length-1; i>=0; i--) {
+			s+=str[i];
+		}
+		return s;
+	}
+	console.log(reverse("Ana are mere"));
+
+
+	</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

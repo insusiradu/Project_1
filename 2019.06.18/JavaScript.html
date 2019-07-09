@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript</title>
+	<script>
+		var unNumar = 9;
+		var UnAltNumar = 10;
+
+		var float1 = 195.009;
+		var float2 = 5.9;
+
+		var string = "Ana are mere";
+		var string = 'Ana are pere';
+
+		var isOK = false;
+		var isNotOk = true;
+
+		var array = [];
+		var arrayNumere = [10, 9, 7, 2, 150];
+		var arrayStriguri = ["Ana", "Are", "Mere"];
+		var arrayDeArray = [[1, 2, 3], ["a", "b", "c"], [1, 2, 3, 4, "d", "f"]];
+
+		var sum = 5 + 5 + 9;
+		var concat = "Ana" + " " + "Mere";
+
+		sum = sum - 198;
+		sum = sum * 198;
+		sum = sum / 199;
+
+		sum = sum / 199;
+
+
+		var dif = 198 % 10;
+		var dif2 = 198 % 100;
+
+		console.log(unNumar, arrayDeArray);
+		console.log(sum);
+		console.log(concat);
+
+		if(125 % 2 === 0) {
+			console.log("Este par");
+		}else {
+			console.log("Nu este par");
+		}
+
+		function isOdd(nr) {
+			if (nr %2 === 0) {
+				return false;
+			}
+		 	else {
+				return true;
+			}
+		}
+
+		function average (nr1, nr2, nr3, teza) {
+			var avg = (nr1+nr2+nr3)/3;
+			avg = (avg*3+teza)/4;
+			return avg;
+		}
+
+		var medie = average (9,9,8,10);
+
+		console.log(medie);
+
+		/* console.log(average(9,5,8,10)); */
+
+		function literPerKmToMilesPerGalon (consumption) {
+			var mpg = 100 * 3.78/(1.61* consumption);
+			return mpg;
+
+		}
+		console.log (literPerKmToMilesPerGalon(1));
+
+		function ariaDreptunghi (latime, lungime) {
+			var aria = latime*lungime;
+			return aria;
+		}
+
+		console.log(ariaDreptunghi(7,3));
+
+		
+
+
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
