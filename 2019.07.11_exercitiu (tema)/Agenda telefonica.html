@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Agenda telefonica</title>
+
+	<script>
+		var lista=[];
+		function draw () {
+			var str = "";
+			for(var i=0;i<lista.length;i++){
+				str+=`<tr>
+					<td>${lista[i].nume}</td>
+					<td>${lista[i].telefon}</td>
+				<tr>`;
+			}
+			document.querySelector("#tabel tbody").innerHTML = str;
+		}
+
+		function adauga(form,event){
+			event.preventDefault();
+			var obj = {};
+			object.form = querySelector("[name='prenume']").value;
+			object.form = querySelector("[name='telefon']").value;
+		}
+		draw();
+		afiseazaTabel()
+	</script>
+
+</head>
+<body>
+	<form id="add-form" onsubmit="adauga(this,event);">
+		
+		<p>Agenda</p>
+		<label>Nume:</label> <input id="nume" type="text" name="nume"/>
+		<label>Telefon:</label> <input id="nume" type="text" name="telefon"/> </br>
+
+		
+	</form>
+	<input type="button" value="Adauga contact" onclick="afiseazaTabel();"/>
+
+	<div id="tableview">
+		<table>
+			<thead>
+				<tr>
+					<th>Nume:</th>
+					<th>Telefon:</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+	</div>
+	
+</body>
+</html>

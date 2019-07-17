@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tema DOM1_Ex3</title>
+	
+	<style>
+		input[type="text"].valid {
+			background-color: green;
+		}
+		
+	</style>
+	
+	<script>
+		function validate(formular, event) {
+			event.preventDefault();
+			var Product1Input = formular.querySelector("[name='Product1']");
+			var Product2Input = formular.querySelector("[name='Product2']");
+			var Product1 = Product1Input.value;
+			var Product2 = Product2Input.value;
+			
+
+			if (Product1.length>Product2.length) {
+				formular.querySelector("[name='Product3']").value=Product1;
+			} else if (Product1.length<Product2.length) {
+				formular.querySelector("[name='Product3']").value=Product2;
+			} 
+		}
+
+	</script>
+
+</head>
+
+<body>
+	<form onsubmit="validate(this, event)">
+		<fieldset>
+			<label>Product 1: <input type="text" name="Product1"></label> </br>
+			<label>Product 2: <input type="text" name="Product2"></label> </br>
+			<label>Product 3: <input type="text" name="Product3"></label> </br>
+			</br>
+
+			<input type="submit" value="Search"/>
+
+		</fieldset>
+	</form>
+
+</body>
+
+
+</html>
