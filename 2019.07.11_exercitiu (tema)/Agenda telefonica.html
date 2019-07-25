@@ -9,8 +9,8 @@
 			var str = "";
 			for(var i=0;i<lista.length;i++){
 				str+=`<tr>
-					<td>${lista[i].nume}</td>
-					<td>${lista[i].telefon}</td>
+					<td>"${lista[i].nume}"</td>
+					<td>"${lista[i].telefon}"</td>
 				<tr>`;
 			}
 			document.querySelector("#tabel tbody").innerHTML = str;
@@ -27,12 +27,13 @@
 	</script>
 
 </head>
+
 <body>
 	<form id="add-form" onsubmit="adauga(this,event);">
 		
 		<p>Agenda</p>
 		<label>Nume:</label> <input id="nume" type="text" name="nume"/>
-		<label>Telefon:</label> <input id="nume" type="text" name="telefon"/> </br>
+		<label>Telefon:</label> <input id="telefon" type="text" name="telefon"/> </br>
 
 		
 	</form>

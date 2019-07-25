@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Food menu</title>
+	<style>
+		body {
+			background-color: #98FB98;
+		}
+		img {
+			height: 200px;
+			width: 250px;
+			vertical-align: middle;
+		}
+		.button {
+			display: inline-block;
+			background-color: red;
+			color: white;
+		}
+
+		.descriere {
+			display: inline-block;
+			width: 900px;
+		}
+		 
+	</style>
+
+<script>
+	var lista=[
+		{
+			imagine:"Pastrama berbecut.jpg",
+			nume:"Pastrama de berbecut",
+			ingrediente:"2 kg carne de miel sau de oaie, 4 capatani de usturoi, 2 lingurite de sare, 2 lingurute de piper, 1 lingurita de boia, 1 ligurita de cimbru, 1/2 pahar de vin alb"
+		},
+		{
+			imagine:"Chiftelute marinate.jpg",
+			nume:"Pastrama de berbecut",
+			ingrediente:"carne, sare, apa, gust"
+
+		},
+		{
+			imagine:"Fasole batuta.jpg",
+			nume:"Fasole batuta",
+			ingrediente:"300g fasole uscata sau 3 conserve fasole alba fiarta, sare, piper, 2-3 catei de usturoi zdrobiti, 2-3 cepe mari, 2 linguri ulei, sare, 2 ligurite bune de paprika (boia dulce)"
+
+		}
+	]
+
+	function draw(){
+				//functia care imi actualizeaza tabelul (interfata) ori de cate ori se modifica lista mea de persoanele
+				//cu ${variabila}, inserez valoarea variabilei in templateul meu de html
+				//parcurg lista si pentru fiecare element al listei creez cate o bucatica de html
+				var str = "";
+				for(var i=0;i<lista.length;i++){
+					str+=`<div> 
+							<img src="${lista[i].imagine}"> 
+							<div class="descriere">
+								<span> <h1>${lista[i].nume}</h1> </span> <br/>
+								<span> ${lista[i].ingrediente} </span>
+							</div>
+							<input type="button" name="" value="DETALII" class="button">  
+						</div>`;
+					
+				}
+				//console.log(str);
+				document.querySelector("#lista-meniu").innerHTML = str;
+			}
+</script>
+</head>
+<body onload="draw()">
+
+	<p>Cald si bun</p> </br>
+
+	<input type="text" name=""/><input type="button" value="Cauta in ingrediente"/> 
+
+	<div id="lista-meniu">
+		
+	</div>
+
+	
+
+	<div> 
+		<img src=""> 
+		<div class="descriere">
+			<span> <h1> Pastrama de berbecut </h1> </span> <br/>
+			<span> 2 kg carne de miel sau de oaie, 4 capatani de usturoi, 2 lingurite de sare, 2 lingurute de piper, 1 lingurita de boia, 1 ligurita de cimbru, 1/2 pahar de vin alb </span>
+		</div>
+		<input type="button" name="" value="DETALII">  
+	</div> 
+	
+	<div> 
+		<img src="Chiftelute marinate.jpg"> 
+		<div class="descriere">
+			<span> <h1> Pastrama de berbecut </h1> </span> <br/>
+			<span> carne, sare, apa, gust </span>
+		</div>
+		<input type="button" name="" value="DETALII">  
+	</div>
+
+</body>
+</html>

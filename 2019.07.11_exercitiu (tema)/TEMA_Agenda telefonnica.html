@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>TEMA-Agenda telefonica</title>
+
+	<style>
+		.hidden{
+				display:none;
+		}
+
+		#add-form{
+			background-color: yellow;
+			width: 700px;
+			border-radius: 10px;
+			padding: 50px;
+			margin-left: 25%;
+			
+		}
+
+		label {
+			font-size: 20px;
+			font-family: verdana;
+			margin-left: 50px;
+		}
+
+		input{
+			height: 30px;
+			border-radius: 5px;
+			width: 200px;	
+		}
+		.button{
+			margin: 10px;
+			font-family: verdana;
+			background-color: blue;
+			color: white;
+			margin-left: 40%;
+
+		}
+		p{
+			text-align: center;
+			font-size: 40px;
+			font-family: verdana;
+		}
+
+		#table-view {
+			background-color: yellow;
+			width: 700px;
+			border-radius: 10px;
+			padding: 50px;
+			margin-left: 25%;
+		}
+		table, th {
+			width:100%;
+			text-align: left;
+		}
+
+
+	</style>
+
+	<script>
+		var lista=[];
+		var idxEditare = -1;
+		
+		function draw(){
+			var str = "";
+			for(var i=0;i<lista.length;i++){
+				str+=`<tr>
+						<td>${lista[i].nume}</td>
+						<td>${lista[i].telefon}</td>
+						<td>
+							<input class="edit" type="button" value="Modifica" onclick="editeaza(${i});" />
+						</td>
+						<td>
+							<input class="del" type="button" value="Sterge" onclick="sterge(${i});" />
+						</td>
+					</tr>`;
+
+			document.querySelector("#tabel tbody").innerHTML = str;
+			}
+		}
+
+		function sterge(aaa){
+				if(confirm(`Esti sigur ca vrei sa stergi inregistrarea ${lista[aaa].nume} ?`)){
+					lista.splice(aaa,1);
+					draw();
+				}
+		}
+		
+		function editeaza(idx){
+				window.idxEditare = idx;
+				var obj = lista[idx];
+				var form = document.querySelector("#add-form");
+				form.querySelector("[name='nume']").value = obj.nume;
+				form.querySelector("[name='telefon']").value = obj.telefon;
+				
+		}
+
+			
+		function afiseazaTabel(){
+			document.querySelector("#table-view").classList.remove("hidden");
+			document.querySelector("#add-form").reset();
+		}
+
+		function adauga(form,event){
+			event.preventDefault();
+			var obj = {
+			};
+			obj.nume = form.querySelector("[name='nume']").value;
+			obj.telefon = form.querySelector("[name='telefon']").value;
+
+			if(idxEditare===-1){
+				lista.push(obj);
+			}else{
+				lista[idxEditare] = obj;
+				idxEditare = -1;
+			}
+				
+				draw();
+				afiseazaTabel();
+		}
+
+	</script>
+
+</head>
+
+
+<body onload="draw()">
+	
+	<p>Agenda</p>
+	<form id="add-form" onsubmit="adauga(this,event);">
+		<label>Nume:</label> <input id="nume" type="text" name="nume"/>
+		<label>Telefon:</label> <input id="telefon" type="numar" name="telefon"/> </br>
+		<input type="submit" value="Adauga" class="button"/>
+	</form>
+	<br/>
+	
+	<div id="table-view" class="hidden">
+		<table id="tabel">
+			<thead>
+				<tr>
+					<th>Nume:</th>
+					<th>Telefon:</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+
+</body>
+
+
+
+
+
+
+</html>
