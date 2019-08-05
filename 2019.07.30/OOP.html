@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+		class Car {
+			constructor (color, nrDoors, fuel, weight, type) {
+				this.color = color;
+				this.nrDoors = nrDoors;
+				this.fuel = fuel;
+				this.weight = weight;
+				this.type = type;
+				this.speed = 0;
+			}
+			accelerate () {
+				this.speed++;
+			}
+			deccelarate () {
+				this.speed--;
+			}
+		}
+
+		var myCar = new Car("black",5,"diesel",1900,"hatchback");
+		myCar.accelerate();
+		myCar.accelerate();
+
+		myCar.deccelerate();
+
+		var myCar = new Car("white",4,"gas",3000,"break");
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
