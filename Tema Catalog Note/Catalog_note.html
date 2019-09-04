@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<head>
+	<style>
+		.hidden{
+			display:none;
+		}
+
+		body {
+  			height: 100%;
+  			margin: 0;
+		}
+
+		form {
+			width: 50%;
+  			padding: 12px 20px;
+  			margin: 8px 0;
+  			box-sizing: border-box;
+			border: solid black;
+		}
+
+		#sectionMedie {
+			width: 50%;
+  			padding: 12px 20px;
+  			margin: 8px 0;
+  			box-sizing: border-box;
+			border: solid black;
+		}
+
+		#sectiuneaCuElevi {
+			background-color: #99ff99;
+			float: left;
+			width: 50%;
+			height: 100%;
+
+		}
+
+		#sectionNote {
+			width: 50%;
+  			padding: 12px 20px;
+  			margin: 8px 0;
+  			box-sizing: border-box;
+			border: solid black;
+
+		}
+
+		#noteSection {
+			background-color: #66ccff;
+			float: right;
+			width: 50%;
+			height: 100%;
+			
+		}
+
+	</style>
+
+
+	<script>
+
+		class Elev {
+			
+			constructor(nume){
+				this.nume = nume;
+				this.note = [];
+			}
+			medie(){
+				
+				if(this.note.length===0){
+					return "";
+				}else{
+					var suma = 0;
+					for(var i=0;i<this.note.length;i++){
+						suma+=this.note[i];
+					}
+					return suma/this.note.length;
+				}
+			}
+			addNota(nota){
+								this.note.push(nota);
+			}
+		}
+		
+		
+		var listaElevi = [];
+		var indexElev = -1;
+		function adaugaElev(event){
+			event.preventDefault();
+			var nume = document.querySelector("[name='nume']").value;
+			listaElevi.push(new Elev(nume));
+			drawElevi();
+		}
+
+		function drawElevi(){
+			var str="";
+			for(var i=0;i<listaElevi.length;i++){
+				str+=`
+					<tr>
+						<td>${listaElevi[i].nume}<td>
+						<td>${listaElevi[i].medie()}<td>
+						<td><input type="button" value="Afiseaza Notele" onclick="editeazaElev(${i});" /><td>
+					</tr>
+				`;
+			}
+			document.querySelector("#tableElevi tbody").innerHTML = str;
+		}
+
+		function drawNote(){
+			var elev = listaElevi[indexElev];
+			var note = elev.note;
+			var str="";
+			for(var i=0;i<note.length;i++){
+				str+=`
+					<tr>
+						<td>${note[i]}<td>
+					</tr>
+				
+				`;
+			}
+			document.querySelector("#tableNote tbody").innerHTML = str;
+		}
+		
+		function editeazaElev(index){
+			indexElev=index;
+			drawNote();
+			document.querySelector("#noteSection").classList.remove("hidden");
+		}
+
+		function adaugaNota(event){
+			event.preventDefault();
+			var nota = document.querySelector("[name='nota']").value;
+			notaNumeric = Number(nota);
+			listaElevi[indexElev].addNota(notaNumeric);
+			drawElevi();
+			drawNote();
+		}
+
+		function sorteazaAscNote(){
+			listaElevi[indexElev].note.sort(function(a,b){
+				return a-b;
+				});
+			drawNote();
+		}
+
+		function sorteazaDescNote(){
+			listaElevi[indexElev].note.sort(function(a,b){
+				return b-a;
+				});
+			drawNote();
+		}
+
+		function sorteazaAscMedie(){
+			listaElevi.sort(function(a,b){
+				return a.medie()-b.medie();
+				});
+			drawElevi();
+		}
+
+		function sorteazaDescMedie(){
+			listaElevi.sort(function(a,b){
+				return b.medie()-a.medie();
+				});
+			drawElevi();
+		}
+
+		function ascundeNote(){
+			document.querySelector("#noteSection").classList.add("hidden");
+		}
+
+	</script>
+
+
+</head>
+
+<body>
+	<div id = "sectiuneaCuElevi">
+	<h1>Lista Elevi</h1>
+
+	<form onsubmit="adaugaElev(event)">
+		Nume:
+		<input type="text" name="nume"/>
+		<input type="submit" value="Adauga Elev"/>
+	</form> <br />
+
+	<div id = "sectionMedie">
+		<div>
+			<input type="button" name="sortAmedie" value="Sorteaza ascendent dupa medie note" onclick="sorteazaAscMedie()" > <br />
+			<input type="button" name="sortDmedie" value="Sorteaza descendent dupa medie note" onclick="sorteazaDescMedie()" >
+		</div>
+
+			
+		<table id="tableElevi">
+			<thead>
+				<tr>
+					<th>Nume</th>
+					<th>Medie</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<br />
+
+
+	<div id="noteSection" class="hidden">
+		<input type="submit" value="Ascunde Notele" onclick="ascundeNote()"/>
+		<h1>Nota elev:</h1>
+	
+		<form onsubmit="adaugaNota(event)">
+			Nota:
+			<input type="text" name="nota"/>
+			<input type="submit" value="Adauga Nota"/>
+		</form>
+
+		<div id="sectionNote">
+			<div>
+				<input type="button" name="sortA" value="Sorteaza ascendent notele" onclick="sorteazaAscNote()"> <br />
+				<input type="button" name="sortD" value="Sorteaza descendent notele" onclick="sorteazaDescNote()">
+			</div>
+
+			<table id="tableNote">
+				<thead>
+					<tr>
+						<th>Nota</th>
+					</tr>
+				</thead>
+				<tbody>
+			
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
